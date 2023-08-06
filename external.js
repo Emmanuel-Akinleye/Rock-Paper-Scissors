@@ -85,7 +85,7 @@ const getResult = () => {
         console.log ('Your Opponent Won the match')
     }
     else if (computerWins == playerWins || playerWins == computerWins) {
-        return "The match has ended in a tie";
+        console.log("The match has ended in a tie");
     }
 }
 game();
