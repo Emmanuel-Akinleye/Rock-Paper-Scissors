@@ -51,7 +51,7 @@ const playRound = (playerSelection, computerSelection) => {
             computerWins++;
             return 'You Lose! Scissors beats Paper'
         }
-        else if (playerSelection ===computerSelection) {
+        else if (playerSelection === computerSelection) {
             return "It's a tie";
         }
         else {
@@ -84,7 +84,7 @@ const getResult = () => {
     else if (computerWins > playerWins) {
         console.log ('Your Opponent Won the match')
     }
-    else if (computerWins == playerWins || playerWins == computerWins) {
+    else if (computerWins === playerWins || playerWins === computerWins) {
         console.log("The match has ended in a tie");
     }
 }
