@@ -71,7 +71,6 @@ const game = () => {
         for(let i = 0; i <= 5; i++) {
             let playerSelection = window.prompt("Choose a Weapon: Rock, Paper or Scissors");
             let computerChoice = getComputerChoice()
-            console.log(`Player Selection ${playerSelection}, Computer Selection is ${computerChoice}`);
             console.log (playRound(playerSelection, computerChoice));
         
         }
