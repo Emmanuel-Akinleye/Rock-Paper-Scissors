@@ -68,13 +68,10 @@ const playRound = (playerSelection, computerSelection) => {
 
 const game = () => {
     
-        for(let i = 0; i <= rounds; i++) {
+        for(let i = 0; i <= 5; i++) {
             let playerSelection = window.prompt("Choose a Weapon: Rock, Paper or Scissors");
             let computerChoice = getComputerChoice()
-            rounds--;
-            console.log(rounds)
             console.log(`Player Selection ${playerSelection}, Computer Selection is ${computerChoice}`);
-            console.log (playRound(playerSelection, computerChoice));
         
         }
 
@@ -90,4 +87,3 @@ const getResult = () => {
 }
 game();
 getResult();
-console.log(rounds)
