@@ -81,7 +81,7 @@ const getResult = () => {
     if (playerWins > computerWins) {
         console.log ("You Won the match")
     }
-    else if (rounds == 0 && computerWins > playerWins) {
+    else if (computerWins > playerWins) {
         console.log ('Your Opponent Won the match')
     }
 }
