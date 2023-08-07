@@ -1,4 +1,4 @@
-// We're using this to get the computer choice
+// We're using this   
 
 let rounds = 5;
 var playerWins = 0;
@@ -24,9 +24,13 @@ const getComputerChoice = () => {
     }
 
 }
+// This is the function we'll use to play a round of rock paper and scissors
 const playRound = (playerSelection, computerSelection) => {
+    //comnerting our inputs to lowercase so as to make every input case-insensitive
     playerSelection = playerSelection.toLowerCase();
     computerSelection = computerSelection.toLowerCase();
+
+    // These LOCs here determines who whins a single round or not
         if (playerSelection == "rock" && computerSelection == "scissors") {
             playerWins++;
             return "You Win! Rock beats Scissors";
@@ -54,6 +58,8 @@ const playRound = (playerSelection, computerSelection) => {
         else if (playerSelection === computerSelection) {
             return "It's a tie";
         }
+
+        // We're going to be displaying an error if the player inputs anything that isn't rock paper or scissors
         else {
             return "ERROR"
         }
@@ -67,8 +73,11 @@ const playRound = (playerSelection, computerSelection) => {
 
 const game = () => {
     
+    // We'll be using a for loop to call our playRound function 5 times and also requesting input from the user
         for(let i = 0; i <= 5; i++) {
+            // This line of code below prompts the user for an input
             let playerSelection = window.prompt("Choose a Weapon: Rock, Paper or Scissors");
+
             let computerChoice = getComputerChoice()
             console.log (playRound(playerSelection, computerChoice));
         
@@ -76,6 +85,7 @@ const game = () => {
 
 }
 
+// This function is used to get result after all rounds has ended
 const getResult = () => {
     if (playerWins > computerWins) {
         console.log ("You Won the match")
@@ -87,5 +97,6 @@ const getResult = () => {
         console.log("The match has ended in a tie");
     }
 }
+// We're calling both functions here 
 game();
 getResult();
