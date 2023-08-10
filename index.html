@@ -1,12 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- ... (head content) ... -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rock Paper And Scissors</title>
+    <title>Rock-Paper-Scissors</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <button class="button">Click Me to Test</button>
+    <!-- UI ELEMENTS-->
+    <div class="header">
+        <h1>
+            Rock Paper And Scissors
+        </h1>
+        <h2>The Player Who Wins 5 times wins the Match</h2>
+    </div>
+    <div class="container">
+        <div class="buttons">
+            <button class="rock" id="btn"><img src="Images/Rocks.png" alt=""></button>
+            <button class="paper" id="btn"><img src="Images/Paper.jpg" alt=""></button>
+            <button class="scissors" id="btn"><img src="Images/Scissors.jpg" alt=""></button>
+        </div>
+            
+        <div class="scores">
+            <h3 class="playerCurrentScore">
+                Player Score: <span class="playerScore"></span>
+            </h3>
+            <h3 class="computerCurrentScore">
+                Computer Score: <span class="computerScore"></span>
+            </h3>
+        </div>
+        <div class="result">
+            <p id="result">Let The Match Begin!!!</p>
+        </div>
+        <div class="reload">
+            <button class="reloadBtn">Play Again</button>
+        </div>
+    </div>
+    
     <script src="external.js"></script>
 </body>
 </html>

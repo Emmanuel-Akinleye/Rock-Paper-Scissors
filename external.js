@@ -3,7 +3,13 @@
 let rounds = 5;
 var playerWins = 0;
 var computerWins = 0;
-const button = document.querySelector('.button');
+const buttons = document.querySelectorAll('#btn');
+const resultElement = document.getElementById('result');
+const playerScore = document.querySelector('.playerScore')
+const computerScore = document.querySelector('.computerScore')
+const reloadBtn = document.querySelector('.reloadBtn');
+
+reloadBtn.addEventListener('click', () => location.reload())
 
 const getComputerChoice = () => {
     // This below is an array containing all the choices the computer can choose
@@ -26,6 +32,7 @@ const getComputerChoice = () => {
 }
 // This is the function we'll use to play a round of rock paper and scissors
 const playRound = (playerSelection, computerSelection) => {
+    
     //comnerting our inputs to lowercase so as to make every input case-insensitive
     playerSelection = playerSelection.toLowerCase();
     computerSelection = computerSelection.toLowerCase();
@@ -33,26 +40,32 @@ const playRound = (playerSelection, computerSelection) => {
     // These LOCs here determines who whins a single round or not
         if (playerSelection == "rock" && computerSelection == "scissors") {
             playerWins++;
+            playerScore.textContent = playerWins;
             return "You Win! Rock beats Scissors";
         }
         else if (playerSelection == "paper" && computerSelection == "rock") {
             playerWins++;
+            playerScore.textContent = playerWins;
             return 'You Win! Paper beats Rock';
         }
         else if (playerSelection == "scissors" && computerSelection == "paper") {
             playerWins++;
+            playerScore.textContent = playerWins;
             return 'You Win! Scissors beats Paper'
         }
         if (computerSelection == "rock" && playerSelection == "scissors") {
             computerWins++;
+            computerScore.textContent = computerWins;
             return "You Lose! Rock beats Scissors";
         }
         else if (computerSelection == "paper" && playerSelection == "rock") {
             computerWins++;
+            computerScore.textContent = computerWins;
             return 'You Lose! Paper beats Rock';
         }
         else if (computerSelection == "scissors" && playerSelection == "paper") {
             computerWins++;
+            computerScore.textContent = computerWins;
             return 'You Lose! Scissors beats Paper'
         }
         else if (playerSelection === computerSelection) {
@@ -63,40 +76,45 @@ const playRound = (playerSelection, computerSelection) => {
         else {
             return "ERROR"
         }
-    
-    
-}
-
-
-
-
-
-const game = () => {
-    
-    // We'll be using a for loop to call our playRound function 5 times and also requesting input from the user
-        for(let i = 0; i <= 5; i++) {
-            // This line of code below prompts the user for an input
-            let playerSelection = window.prompt("Choose a Weapon: Rock, Paper or Scissors");
-
-            let computerChoice = getComputerChoice()
-            console.log (playRound(playerSelection, computerChoice));
         
-        }
-
+    
 }
+
+
+const disableButtons = () => {
+    buttons.forEach(button => {
+        button.disabled = true;
+    })
+}
+
+
+
+const handleClick = (event) => {
+    const playerSelection = event.currentTarget.classList[0]; // Get the class name of the clicked button
+    const computerChoice = getComputerChoice();
+    const result = playRound(playerSelection, computerChoice);
+    resultElement.textContent = result;
+    getResult();
+};
+buttons.forEach(button => {
+    button.addEventListener('click', handleClick)
+})
 
 // This function is used to get result after all rounds has ended
 const getResult = () => {
-    if (playerWins > computerWins) {
-        console.log ("You Won the match")
+    playerScore.textContent = playerWins;
+    computerScore.textContent = computerWins;
+    if (playerWins || computerWins === 5) {
+        if (playerWins >= 5) {
+            resultElement.innerHTML = "You Won the match";
+            disableButtons()
+        }
+        else if (computerWins >= 5 ) {
+            resultElement.innerHTML ='Your Opponent Won the match'
+            disableButtons()
+        }
     }
-    else if (computerWins > playerWins) {
-        console.log ('Your Opponent Won the match')
-    }
-    else {
-        console.log("The match has ended in a tie");
-    }
+    
 }
-// We're calling both functions here 
-game();
-getResult();
+
+
